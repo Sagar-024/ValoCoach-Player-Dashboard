@@ -33,7 +33,10 @@ export default function Dashboard({ data }: DashboardProps) {
 
   return (
     <>
-      <section className="w-full relative pt-10 pb-12 md:pt-12 md:pb-20">
+      <section
+        className="w-full relative"
+        style={{ paddingTop: "80px", paddingBottom: "100px" }}
+      >
         <Container>
           {/* Section Header */}
           <TopInfoStrip counts={counts} filter={filter} setFilter={setFilter} />
