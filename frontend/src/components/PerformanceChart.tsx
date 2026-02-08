@@ -65,7 +65,7 @@ export default function PerformanceChart({ matches }: PerformanceChartProps) {
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-4 mb-12">
         <div className="w-12 h-[2px] bg-rose-500 rounded-full" />
         <h3 className="font-display text-3xl font-bold text-black dark:text-white tracking-tight">
           Tactical Map Performance

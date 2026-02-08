@@ -17,9 +17,9 @@ export default function PerformancePage() {
   const serializedData = JSON.parse(JSON.stringify(playerData));
 
   return (
-    <main className="min-h-screen bg-[var(--valo-bg-deep)] transition-theme py-16">
+    <main className="min-h-screen bg-[var(--valo-bg-deep)] transition-theme pt-28 pb-20 md:pt-36 md:pb-32">
       <Container>
-        <div className="mb-12">
+        <div className="mb-16 md:mb-24">
           <h1 className="font-display text-5xl md:text-7xl font-bold text-[var(--valo-text-primary)] tracking-tight mb-4">
             Performance<span className="text-[var(--valo-primary)]">.</span>
           </h1>

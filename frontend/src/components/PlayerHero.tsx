@@ -18,16 +18,19 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
       className="
         w-full relative transition-theme 
         border-b border-[var(--valo-border)]
-        pt-24 pb-24 
-        md:pt-40 md:pb-40
+
+        pt-28 pb-16
+        md:pt-36 md:pb-20
+        xl:pt-40 xl:pb-24
       "
       style={{
         background:
           "radial-gradient(ellipse at top, rgba(255, 70, 85, 0.05) 0%, transparent 50%), linear-gradient(180deg, rgba(18, 23, 29, 0) 0%, rgba(255, 70, 85, 0.02) 100%)",
+        minHeight: "unset", // prevents unwanted vertical stretch
       }}
     >
       <Container>
-        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-10 xl:gap-16">
+        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-8 xl:gap-12">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 flex-1 w-full max-w-3xl">
             <PlayerAvatar
               imageUrl={data.player_card_link}
@@ -35,7 +38,7 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
               fallbackInitial={displayName.substring(0, 1).toUpperCase()}
             />
 
-            <div className="flex flex-col items-center md:items-start pt-4 gap-4 md:gap-6 text-center md:text-left w-full">
+            <div className="flex flex-col items-center md:items-start pt-2 gap-3 md:gap-5 text-center md:text-left w-full">
               <PlayerName name={displayName} tag={displayTag} />
 
               <PlayerRankInfo
@@ -81,7 +84,7 @@ function PlayerAvatar({
 
   return (
     <div className="relative shrink-0 group">
-      <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-2 border-[var(--valo-bg-elevated)] ring-1 ring-[var(--valo-border)] shadow-xl relative z-10 transition-transform duration-500 hover:scale-105">
+      <div className="w-[110px] h-[110px] md:w-[120px] md:h-[120px] rounded-full overflow-hidden border-2 border-[var(--valo-bg-elevated)] ring-1 ring-[var(--valo-border)] shadow-xl relative z-10 transition-transform duration-500 hover:scale-105">
         {!imgError ? (
           <Image
             src={imageUrl}
@@ -106,7 +109,7 @@ function PlayerAvatar({
           </div>
         )}
       </div>
-      <div className="absolute inset-0 bg-[var(--valo-primary)] opacity-20 blur-3xl -z-10 rounded-full transform scale-90 group-hover:scale-110 transition-transform duration-500" />
+      <div className="absolute inset-0 bg-[var(--valo-primary)] opacity-15 blur-2xl -z-10 rounded-full transform scale-90 group-hover:scale-110 transition-transform duration-500" />
     </div>
   );
 }
@@ -118,24 +121,19 @@ interface PlayerNameProps {
 
 function PlayerName({ name, tag }: PlayerNameProps) {
   return (
-    <div>
-      <h1 className="flex flex-wrap items-baseline justify-center md:justify-start gap-x-3 leading-none">
-        <span
-          className="font-display font-bold text-[var(--valo-text-primary)] text-5xl md:text-7xl tracking-tight drop-shadow-lg"
-          style={{
-            letterSpacing: "-0.03em",
-            textShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
-          }}
-        >
-          {name}
+    <h1 className="flex flex-wrap items-baseline justify-center md:justify-start gap-x-3 leading-none">
+      <span
+        className="font-display font-bold text-[var(--valo-text-primary)] text-4xl md:text-6xl tracking-tight"
+        style={{ letterSpacing: "-0.03em" }}
+      >
+        {name}
+      </span>
+      {tag && (
+        <span className="font-sans text-lg md:text-xl text-[var(--valo-text-tertiary)] font-normal opacity-50 translate-y-[-1px]">
+          {tag}
         </span>
-        {tag && (
-          <span className="font-sans text-xl md:text-2xl text-[var(--valo-text-tertiary)] font-normal opacity-50 translate-y-[-2px]">
-            {tag}
-          </span>
-        )}
-      </h1>
-    </div>
+      )}
+    </h1>
   );
 }
 
@@ -151,10 +149,10 @@ function PlayerRankInfo({
   leaderboardPlacement,
 }: PlayerRankInfoProps) {
   return (
-    <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 mt-1">
+    <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-5 mt-1">
       <div className="flex items-center gap-3">
-        <div className="w-2.5 h-2.5 rounded-[1px] bg-[var(--valo-primary)] shadow-[0_0_8px_rgba(255,70,85,0.6)]" />
-        <span className="font-display font-medium text-[var(--valo-text-primary)] text-lg tracking-wide uppercase">
+        <div className="w-2.5 h-2.5 rounded-[1px] bg-[var(--valo-primary)] shadow-[0_0_6px_rgba(255,70,85,0.5)]" />
+        <span className="font-display font-medium text-[var(--valo-text-primary)] text-base tracking-wide uppercase">
           {currentRank}
         </span>
       </div>
@@ -170,23 +168,23 @@ function PlayerRankInfo({
         </span>
       </div>
 
-      <Divider />
-
       {leaderboardPlacement && (
         <>
-          <div className="px-2 py-0.5 rounded bg-[rgba(255,70,85,0.1)] border border-[rgba(255,70,85,0.2)]">
+          <Divider />
+          <div className="px-2 py-0.5 rounded bg-[rgba(255,70,85,0.08)] border border-[rgba(255,70,85,0.15)]">
             <span className="font-mono text-xs text-[var(--valo-primary)] font-bold">
               #{String(leaderboardPlacement).replace("#", "")}
             </span>
           </div>
-          <Divider />
         </>
       )}
+
+      <Divider />
 
       <div className="flex items-center gap-2 group cursor-default">
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--valo-success)] opacity-60" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--valo-success)] shadow-[0_0_8px_rgba(0,214,163,0.6)]" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--valo-success)] shadow-[0_0_6px_rgba(0,214,163,0.5)]" />
         </span>
         <span className="text-xs uppercase tracking-widest font-bold text-[var(--valo-text-tertiary)] group-hover:text-[var(--valo-success)] transition-colors duration-200">
           Active
@@ -216,8 +214,8 @@ function PlayerStats({
   winPercentage,
 }: PlayerStatsProps) {
   return (
-    <div className="w-full xl:w-auto xl:min-w-[500px]">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 p-0 md:p-4 rounded-2xl md:bg-[var(--valo-bg-surface)]/30 border-0 md:border md:border-[var(--valo-border)]/50 backdrop-blur-sm">
+    <div className="w-full xl:w-auto xl:min-w-[500px] mt-6 xl:mt-0">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 p-2 md:p-4 rounded-2xl md:bg-[var(--valo-bg-surface)]/30 border md:border-[var(--valo-border)]/50 backdrop-blur-sm">
         <StatCard label="K/D Ratio" value={kdRatio} decimals={2} />
         <StatCard
           label="HS %"

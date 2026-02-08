@@ -1,14 +1,43 @@
 @import "tailwindcss";
 
-/* ValoCoach Design System - Section 2: Color System */
+@layer base, components, utilities;
+
+/* =========================
+   BASE LAYER (CRITICAL FIX)
+========================= */
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--valo-bg-deep);
+    min-height: 100vh;
+    color: var(--valo-text-primary);
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    transition:
+      background-color 400ms ease-in-out,
+      color 400ms ease-in-out;
+  }
+}
+
+/* =========================
+   DESIGN TOKENS
+========================= */
+
 :root {
-  /* Dark Mode Foundation Surfaces */
   --valo-bg-deep: #0a0e12;
   --valo-bg-surface: #12171d;
   --valo-bg-elevated: #1a2028;
   --valo-border: #252d37;
 
-  /* Semantic Colors */
   --valo-primary: #ff4655;
   --valo-secondary: #53fbd8;
   --valo-success: #00d6a3;
@@ -16,13 +45,11 @@
   --valo-warning: #ffb800;
   --valo-info: #5b9fff;
 
-  /* Typography & Text */
   --valo-text-primary: #f8fafc;
   --valo-text-secondary: #94a3b8;
   --valo-text-tertiary: #64748b;
   --valo-text-inverse: #0a0e12;
 
-  /* Spacing Scale (4px base unit) */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -33,7 +60,6 @@
   --space-16: 64px;
   --space-24: 96px;
 
-  /* Typography Scale */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -44,7 +70,6 @@
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
 
-  /* Z-Index Scale */
   --z-base: 0;
   --z-card: 1;
   --z-dropdown: 100;
@@ -53,29 +78,31 @@
   --z-modal: 1000;
   --z-toast: 1100;
 
-  /* Enhanced spacing */
   --hero-padding: 48px 0;
   --section-gap: 48px;
   --card-padding: 20px 24px;
   --stat-card-size: 100px;
 
-  /* REFINEMENT: Enhanced shadows */
   --shadow-card-rest:
     0 1px 3px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.01);
+
   --shadow-card-hover:
     0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 70, 85, 0.2),
     inset 0 0 30px rgba(255, 255, 255, 0.03);
+
   --shadow-win-glow: 0 0 20px rgba(0, 214, 163, 0.3);
   --shadow-loss-glow: 0 0 20px rgba(255, 70, 85, 0.3);
 
-  /* REFINEMENT: Edge indicators */
   --edge-width: 4px;
   --edge-win: #00d6a3;
   --edge-loss: #ff4655;
   --edge-draw: #ffb800;
 }
 
-/* Light Mode Palette */
+/* =========================
+   LIGHT MODE
+========================= */
+
 [data-theme="light"] {
   --valo-bg-deep: #ffffff;
   --valo-bg-surface: #f8fafc;
@@ -95,28 +122,10 @@
   --valo-text-inverse: #ffffff;
 }
 
-/* Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* =========================
+   BACKGROUND GRADIENTS
+========================= */
 
-body {
-  background: var(--valo-bg-deep);
-  min-height: 100vh;
-  color: var(--valo-text-primary);
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  transition:
-    background-color 400ms ease-in-out,
-    color 400ms ease-in-out;
-}
-
-/* Dark mode gradient overlay */
 :root body {
   background: linear-gradient(135deg, #0a0e12 0%, #0f1419 40%, #0a0e12 100%);
 }
@@ -125,7 +134,10 @@ body {
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 40%, #f1f5f9 100%);
 }
 
-/* Focus Styles - Enhanced for Premium Feel */
+/* =========================
+   FOCUS STYLE
+========================= */
+
 :focus-visible {
   outline: 2px solid var(--valo-primary);
   outline-offset: 3px;
@@ -139,12 +151,14 @@ body {
     outline-width: 2px;
   }
   50% {
-    outline-color: var(--valo-primary);
     outline-width: 3px;
   }
 }
 
-/* Section 11: Accessibility - Reduced Motion */
+/* =========================
+   REDUCED MOTION
+========================= */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -155,7 +169,10 @@ body {
   }
 }
 
-/* Typography Classes */
+/* =========================
+   FONTS
+========================= */
+
 .font-display {
   font-family:
     "Clash Display",
@@ -168,7 +185,10 @@ body {
   font-family: "JetBrains Mono", "Roboto Mono", monospace;
 }
 
-/* Shadow System */
+/* =========================
+   SHADOW SYSTEM
+========================= */
+
 .shadow-level-1 {
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.3),
@@ -188,7 +208,10 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-/* Utility: Smooth transitions */
+/* =========================
+   TRANSITION UTILITY
+========================= */
+
 .transition-theme {
   transition:
     background-color 400ms ease-in-out,
@@ -196,79 +219,46 @@ body {
     border-color 400ms ease-in-out;
 }
 
-/* Container Utility */
-.container {
+/* =========================
+   CONTAINER (TAILWIND FRIENDLY)
+========================= */
+
+.content-container {
   width: 100%;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 48px;
-  padding-right: 48px;
 }
 
-@media (max-width: 1199px) {
-  .container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
+/* =========================
+   SECTION HEADER
+========================= */
 
-@media (max-width: 767px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
-/* Section Header */
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
-  margin-top: 32px;
+  margin: 32px 0;
   gap: 16px;
   flex-wrap: wrap;
 }
 
-.section-header-left {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
+/* =========================
+   AVATAR
+========================= */
 
-.section-title {
-  font-family: "Clash Display", sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  color: var(--valo-text-primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.section-count {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1.125rem;
-  color: var(--valo-text-secondary);
-  font-weight: 600;
-}
-
-/* Avatar Styles */
 .avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   position: relative;
-  /* Soft outer halo using --valo-primary at ~0.15 opacity */
   box-shadow:
     0 0 0 1px rgba(255, 70, 85, 0.1),
     0 0 0 4px rgba(255, 70, 85, 0.15);
   transition:
     transform 300ms ease,
     box-shadow 300ms ease;
-  z-index: 5;
-  background-color: var(--valo-bg-elevated); /* For transparency fallback */
+  background-color: var(--valo-bg-elevated);
 }
 
 @media (max-width: 768px) {
@@ -278,48 +268,10 @@ body {
   }
 }
 
-/* Subtle backdrop blur behind avatar only */
-.avatar::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  background: var(--valo-primary);
-  opacity: 0.15;
-  filter: blur(24px);
-  border-radius: 50%;
-  z-index: -1;
-  pointer-events: none;
-  transition:
-    opacity 300ms ease,
-    filter 300ms ease;
-}
+/* =========================
+   SHINE ANIMATION
+========================= */
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-}
-
-.avatar:hover {
-  transform: scale(1.02); /* +2% scale */
-  box-shadow:
-    0 0 0 1px rgba(255, 70, 85, 0.2),
-    0 0 0 6px rgba(255, 70, 85, 0.2);
-}
-
-.avatar:hover::after {
-  opacity: 0.2;
-
-  filter: blur(32px); /* Slight increase in glow blur */
-}
-
-/* Custom Animations */
 @keyframes shine {
   0% {
     transform: skewX(-12deg) translateX(-150%);
