@@ -18,7 +18,7 @@ export default function Home() {
   const serializedData = JSON.parse(JSON.stringify(playerData));
 
   return (
-    <main className="min-h-screen bg-[var(--valo-bg-deep)] transition-theme">
+    <main className="min-h-screen bg-[var(--valo-bg-deep)] transition-theme flex flex-col gap-32 md:gap-40 pb-32">
       <PlayerHero data={serializedData} />
 
       {/* Dashboard with Stats, Matches, and Chart */}
