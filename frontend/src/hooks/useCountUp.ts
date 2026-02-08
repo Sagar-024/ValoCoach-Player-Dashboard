@@ -12,8 +12,8 @@ export function useCountUp(
   decimals: number = 0
 ): number {
   const [count, setCount] = useState(0);
-  const frameRef = useRef<number>();
-  const startTimeRef = useRef<number>();
+  const frameRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     // Check for reduced motion preference (Section 11)
@@ -25,7 +25,7 @@ export function useCountUp(
     }
 
     const animate = (currentTime: number) => {
-      if (!startTimeRef.current) {
+      if (startTimeRef.current === null) {
         startTimeRef.current = currentTime;
       }
 
