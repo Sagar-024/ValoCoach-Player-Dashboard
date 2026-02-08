@@ -15,7 +15,7 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
 
   return (
     <section
-      className="w-full relative transition-theme border-b border-[var(--valo-border)] py-12 md:py-20"
+      className="w-full relative transition-theme border-b border-[var(--valo-border)] pt-24 pb-20 md:pt-36 md:pb-32"
       style={{
         background:
           "radial-gradient(ellipse at top, rgba(255, 70, 85, 0.05) 0%, transparent 50%), linear-gradient(180deg, rgba(18, 23, 29, 0) 0%, rgba(255, 70, 85, 0.02) 100%)",
