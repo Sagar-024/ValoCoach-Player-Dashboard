@@ -5,7 +5,6 @@ import MatchCard from "./MatchCard";
 import MatchModal from "./MatchModal";
 import EmptyState from "./EmptyState";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 
 export default function MatchList({ matches }: { matches: Match[] }) {
   const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
@@ -27,14 +26,12 @@ export default function MatchList({ matches }: { matches: Match[] }) {
         ))}
       </div>
 
-      <AnimatePresence>
-        {selectedMatch && (
-          <MatchModal
-            match={selectedMatch}
-            onClose={() => setSelectedMatch(null)}
-          />
-        )}
-      </AnimatePresence>
+      {selectedMatch && (
+        <MatchModal
+          match={selectedMatch}
+          onClose={() => setSelectedMatch(null)}
+        />
+      )}
     </>
   );
 }
