@@ -19,7 +19,6 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
         w-full relative transition-theme 
         border-b border-[var(--valo-border)]
         mt-32 md:mt-40
-        mb-32 md:mb-40
         pt-24 pb-24 
         md:pt-40 md:pb-40
       "
