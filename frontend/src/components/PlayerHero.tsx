@@ -30,15 +30,15 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
       }}
     >
       <Container>
-        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-8 xl:gap-12">
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 flex-1 w-full max-w-3xl">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-20">
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-10 flex-1 w-full max-w-3xl">
             <PlayerAvatar
               imageUrl={data.player_card_link}
               playerName={data.player_name}
               fallbackInitial={displayName.substring(0, 1).toUpperCase()}
             />
 
-            <div className="flex flex-col items-center md:items-start pt-2 gap-3 md:gap-5 text-center md:text-left w-full">
+            <div className="flex flex-col items-center md:items-start gap-4 md:gap-6 text-center md:text-left w-full">
               <PlayerName name={displayName} tag={displayTag} />
 
               <PlayerRankInfo
