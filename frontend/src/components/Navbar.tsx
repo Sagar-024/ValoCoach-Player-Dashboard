@@ -103,7 +103,7 @@ export default function Navbar() {
 
       <div
         className={`
-          fixed inset-0 bg-black/60 backdrop-blur-sm z-[900]
+          fixed inset-0 bg-black/80 backdrop-blur-md z-[900]
           transition-opacity duration-500
           ${mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
         `}
@@ -111,35 +111,81 @@ export default function Navbar() {
       >
         <div
           className={`
-            absolute top-0 right-0 bottom-0 w-4/5 max-w-xs 
-            bg-[var(--valo-bg-deep)]/95 backdrop-blur-xl 
-            border-l border-[var(--valo-border)]
-            transform transition-transform duration-500 ease-out
+            absolute top-0 right-0 bottom-0 w-[85%] max-w-sm 
+            bg-[var(--valo-bg-deep)] shadow-[-10px_0_40px_rgba(0,0,0,0.5)]
+            border-l border-[var(--valo-border)]/50
+            transform transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1)
             ${mobileOpen ? "translate-x-0" : "translate-x-full"}
+            flex flex-col
           `}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-6 flex flex-col gap-8 mt-16">
-            {navLinks.map((link) => {
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between p-6 border-b border-[var(--valo-border)]/30">
+            <h2 className="font-display font-bold text-xl tracking-tight text-[var(--valo-text-primary)]">
+              Menu<span className="text-[var(--valo-primary)]">.</span>
+            </h2>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="p-2 rounded-full hover:bg-[var(--valo-primary)]/10 text-[var(--valo-text-secondary)] hover:text-[var(--valo-primary)] transition-all"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Nav Links Container */}
+          <div className="flex-1 overflow-y-auto py-10 px-6 flex flex-col gap-4">
+            {navLinks.map((link, idx) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={`
-                    text-lg font-semibold tracking-wide
+                    group relative flex items-center justify-between p-4 rounded-xl
+                    transition-all duration-300
                     ${
                       isActive
-                        ? "text-[var(--valo-primary)]"
-                        : "text-[var(--valo-text-tertiary)] hover:text-[var(--valo-primary)]"
+                        ? "bg-[var(--valo-primary)]/10 text-[var(--valo-primary)]"
+                        : "text-[var(--valo-text-secondary)] hover:bg-[var(--valo-bg-elevated)] hover:text-[var(--valo-text-primary)]"
                     }
                   `}
+                  style={{
+                    transitionDelay: `${idx * 50}ms`,
+                    transform: mobileOpen
+                      ? "translateX(0)"
+                      : "translateX(20px)",
+                    opacity: mobileOpen ? 1 : 0,
+                  }}
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.label}
+                  <span className="text-xl font-display font-medium uppercase tracking-wider">
+                    {link.label}
+                  </span>
+
+                  <div
+                    className={`
+                    w-2 h-2 rounded-full transition-all duration-300
+                    ${isActive ? "bg-[var(--valo-primary)] scale-125" : "bg-transparent group-hover:bg-[var(--valo-text-tertiary)]"}
+                  `}
+                  />
                 </Link>
               );
             })}
+          </div>
+
+          {/* Mobile Menu Footer */}
+          <div className="p-8 border-t border-[var(--valo-border)]/30 bg-[var(--valo-bg-surface)]/50">
+            <div className="flex flex-col gap-4">
+              <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--valo-text-tertiary)]">
+                ValoCoach Tactical
+              </p>
+              <div className="h-px w-10 bg-[var(--valo-primary)]" />
+              <p className="text-[10px] text-[var(--valo-text-tertiary)] leading-relaxed">
+                Elevating your gameplay with precise analytics and tactical
+                insights.
+              </p>
+            </div>
           </div>
         </div>
       </div>
