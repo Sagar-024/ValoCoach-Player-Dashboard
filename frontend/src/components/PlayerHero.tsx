@@ -15,7 +15,14 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
 
   return (
     <section
-      className="w-full relative transition-theme border-b border-[var(--valo-border)] pt-24 pb-20 md:pt-36 md:pb-32"
+      className="
+        w-full relative transition-theme 
+        border-b border-[var(--valo-border)]
+        mt-32 md:mt-40
+        mb-32 md:mb-40
+        pt-24 pb-24 
+        md:pt-40 md:pb-40
+      "
       style={{
         background:
           "radial-gradient(ellipse at top, rgba(255, 70, 85, 0.05) 0%, transparent 50%), linear-gradient(180deg, rgba(18, 23, 29, 0) 0%, rgba(255, 70, 85, 0.02) 100%)",
@@ -23,7 +30,6 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
     >
       <Container>
         <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-10 xl:gap-16">
-          {/* --- LEFT: PLAYER IDENTITY --- */}
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 flex-1 w-full max-w-3xl">
             <PlayerAvatar
               imageUrl={data.player_card_link}
@@ -31,7 +37,6 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
               fallbackInitial={displayName.substring(0, 1).toUpperCase()}
             />
 
-            {/* B. Name & Rank Metadata */}
             <div className="flex flex-col items-center md:items-start pt-4 gap-4 md:gap-6 text-center md:text-left w-full">
               <PlayerName name={displayName} tag={displayTag} />
 
@@ -55,10 +60,6 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
   );
 }
 
-// ============================================================================
-// Helper Functions
-// ============================================================================
-
 function parsePlayerName(fullName: string) {
   const nameParts = fullName.split("#");
   return {
@@ -66,10 +67,6 @@ function parsePlayerName(fullName: string) {
     displayTag: nameParts.length > 1 ? `#${nameParts[1]}` : "",
   };
 }
-
-// ============================================================================
-// Sub-Components
-// ============================================================================
 
 interface PlayerAvatarProps {
   imageUrl: string;
@@ -157,7 +154,6 @@ function PlayerRankInfo({
 }: PlayerRankInfoProps) {
   return (
     <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 mt-1">
-      {/* Current Rank */}
       <div className="flex items-center gap-3">
         <div className="w-2.5 h-2.5 rounded-[1px] bg-[var(--valo-primary)] shadow-[0_0_8px_rgba(255,70,85,0.6)]" />
         <span className="font-display font-medium text-[var(--valo-text-primary)] text-lg tracking-wide uppercase">
@@ -167,7 +163,6 @@ function PlayerRankInfo({
 
       <Divider />
 
-      {/* Peak Rank */}
       <div className="flex items-center gap-2">
         <span className="text-xs uppercase tracking-wider font-bold text-[var(--valo-text-tertiary)]">
           Peak
@@ -179,7 +174,6 @@ function PlayerRankInfo({
 
       <Divider />
 
-      {/* Leaderboard Badge */}
       {leaderboardPlacement && (
         <>
           <div className="px-2 py-0.5 rounded bg-[rgba(255,70,85,0.1)] border border-[rgba(255,70,85,0.2)]">
@@ -191,7 +185,6 @@ function PlayerRankInfo({
         </>
       )}
 
-      {/* Active Status */}
       <div className="flex items-center gap-2 group cursor-default">
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--valo-success)] opacity-60" />
