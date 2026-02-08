@@ -33,8 +33,8 @@ export default function Navbar() {
           transition-all duration-500 ease-out
           ${
             isScrolled
-              ? "bg-[var(--valo-bg-deep)]/80 backdrop-blur-xl border-b border-[var(--valo-border)]/70 shadow-[0_4px_30px_rgba(0,0,0,0.15)]"
-              : "bg-[var(--valo-bg-deep)]/60 backdrop-blur-lg border-b border-transparent"
+              ? "bg-[var(--valo-bg-deep)]/90 backdrop-blur-xl border-b border-[var(--valo-border)]/70 shadow-[var(--shadow-navbar)]"
+              : "bg-transparent border-b border-transparent shadow-none"
           }
         `}
       >

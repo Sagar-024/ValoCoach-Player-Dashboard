@@ -102,17 +102,13 @@ const MatchCard = memo(function MatchCard({
           border-left: 4px solid transparent;
           transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
           animation: slideUp 600ms cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
-          box-shadow:
-            0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: var(--shadow-card-rest);
         }
 
         .match-card:hover {
           background: var(--valo-bg-surface);
           transform: translateY(-4px) scale-[1.01];
-          box-shadow:
-            0 20px 25px -5px rgba(0, 0, 0, 0.1),
-            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          box-shadow: var(--shadow-card-hover);
         }
 
         .match-card.win:hover {

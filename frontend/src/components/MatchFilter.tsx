@@ -46,7 +46,7 @@ export default function MatchFilter({
 
   return (
     <div
-      className="inline-flex items-center p-1 md:p-2 gap-1 md:gap-2 rounded-2xl bg-[var(--valo-bg-surface)]/80 backdrop-blur-xl border border-[var(--valo-border)] shadow-lg"
+      className="inline-flex items-center p-1 md:p-1.5 gap-0.5 md:gap-1.5 rounded-xl bg-[var(--valo-bg-surface)] border border-[var(--valo-border)]/50 shadow-[var(--shadow-premium-soft)]"
       role="tablist"
       aria-label="Match filters"
     >
@@ -63,43 +63,49 @@ export default function MatchFilter({
             aria-controls={`panel-${filter}`}
             onClick={() => onFilterChange(filter)}
             className={`
-              relative flex items-center gap-2 md:gap-4 
-              px-3 py-2 md:px-10 md:py-4
-              rounded-xl 
-              text-xs md:text-base font-bold
-              transition-all duration-200 ease-out
-              border
-              outline-none focus-visible:ring-2 focus-visible:ring-[var(--valo-primary)]/50
+              relative flex items-center gap-1.5 md:gap-3 
+              px-2 py-1.5 md:px-5 md:py-2.5
+              rounded-lg
+              text-[9px] md:text-sm font-bold
+              transition-all duration-300 ease-out
               select-none cursor-pointer
-              group
+              group overflow-hidden
               ${
                 isActive
-                  ? `${colors.active} shadow-lg`
-                  : "border-transparent text-[var(--valo-text-secondary)] hover:text-[var(--valo-text-primary)] hover:bg-[var(--valo-bg-elevated)] hover:scale-[1.02] active:scale-[0.98]"
+                  ? `${colors.active} border border-[var(--valo-primary)]/40 scale-[1.02]`
+                  : "border border-transparent text-[var(--valo-text-secondary)] hover:text-[var(--valo-text-primary)] hover:bg-[var(--valo-bg-elevated)] hover:scale-[1.01]"
               }
             `}
+            style={{
+              boxShadow: isActive
+                ? "0 4px 10px -2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 0 1px rgba(255,70,85,0.1)"
+                : "none",
+              textShadow: isActive ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
+            }}
           >
-            {/* Ripple effect on click */}
-            <span className="absolute inset-0 overflow-hidden rounded-xl">
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-            </span>
+            {/* 3D Glass Highlight Header */}
+            {isActive && (
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+            )}
 
             {/* Label */}
-            <span className="tracking-wide relative z-10">{filter}</span>
+            <span className="tracking-widest relative z-10 uppercase">
+              {filter}
+            </span>
 
             {/* Count Badge */}
             <span
               className={`
                 relative z-10
                 flex items-center justify-center 
-                h-6 min-w-[24px] px-1.5 md:h-8 md:min-w-[32px] md:px-3
-                rounded-lg 
-                text-[10px] md:text-sm font-bold
-                transition-all duration-200
+                h-3.5 min-w-[18px] px-1 md:h-5 md:min-w-[26px] md:px-2
+                rounded-md 
+                text-[7px] md:text-[10px] font-bold
+                transition-all duration-300
                 ${
                   isActive
-                    ? `${colors.badge} shadow-md`
-                    : "bg-[var(--valo-bg-elevated)] text-[var(--valo-text-primary)] group-hover:scale-110"
+                    ? `${colors.badge} shadow-[0_2px_4px_rgba(0,0,0,0.3)]`
+                    : "bg-[var(--valo-bg-elevated)] text-[var(--valo-text-primary)]"
                 }
               `}
             >

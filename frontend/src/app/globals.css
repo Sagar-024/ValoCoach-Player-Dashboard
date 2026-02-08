@@ -83,15 +83,44 @@
   --card-padding: 20px 24px;
   --stat-card-size: 100px;
 
-  --shadow-card-rest:
-    0 1px 3px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.01);
+  /* ULTRA-PREMIUM SHADOW SYSTEM (Maximum Depth) */
+  --shadow-premium-soft: 
+    0 10px 40px rgba(0, 0, 0, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  
+  --shadow-premium-hard:
+    0 30px 60px -12px rgba(0, 0, 0, 0.6),
+    0 12px 24px -6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
-  --shadow-card-hover:
-    0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 70, 85, 0.2),
-    inset 0 0 30px rgba(255, 255, 255, 0.03);
+  --shadow-premium-inset:
+    inset 0 6px 18px rgba(0, 0, 0, 0.4),
+    inset 0 0 4px rgba(255, 255, 255, 0.1);
 
-  --shadow-win-glow: 0 0 20px rgba(0, 214, 163, 0.3);
-  --shadow-loss-glow: 0 0 20px rgba(255, 70, 85, 0.3);
+  --shadow-navbar:
+    0 12px 40px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  --shadow-card-rest: var(--shadow-premium-soft);
+  --shadow-card-hover: 
+    0 40px 80px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 2px var(--valo-primary),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  /* Light mode override for maximum contrast */
+  [data-theme="light"] {
+    --shadow-premium-soft: 
+      0 12px 48px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --shadow-navbar:
+      0 8px 32px -8px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+
+  --shadow-win-glow: 0 0 30px -5px rgba(0, 214, 163, 0.4);
+  --shadow-loss-glow: 0 0 30px -5px rgba(255, 70, 85, 0.4);
 
   --edge-width: 4px;
   --edge-win: #00d6a3;

@@ -72,7 +72,7 @@ export default function PerformanceChart({ matches }: PerformanceChartProps) {
         </h3>
       </div>
 
-      <div className="relative w-full h-[320px] md:h-[450px] p-4 md:p-12 rounded-3xl bg-[var(--valo-bg-surface)] border border-[var(--valo-border)] shadow-[var(--shadow-card-rest)] overflow-hidden">
+      <div className="relative w-full h-[320px] md:h-[450px] p-4 md:p-12 rounded-3xl bg-[var(--valo-bg-surface)] border border-[var(--valo-border)] shadow-[var(--shadow-premium-hard)] overflow-hidden">
         {/* Magazine Texture Layer */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
