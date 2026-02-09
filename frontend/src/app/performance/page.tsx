@@ -21,7 +21,7 @@ export default function PerformancePage() {
       <Container>
         <div className="mb-16 md:mb-24">
           <h1 className="font-display text-5xl md:text-7xl font-bold text-[var(--valo-text-primary)] tracking-tight mb-4">
-            Performance<span className="text-[var(--valo-primary)]">.</span>
+            Performance
           </h1>
           <p className="text-[var(--valo-text-secondary)] text-lg max-w-2xl font-sans">
             Detailed map analytics and performance breakdown based on your

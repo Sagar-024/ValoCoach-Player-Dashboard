@@ -208,7 +208,10 @@ function PlayerStats({
 }: PlayerStatsProps) {
   return (
     <div className="w-full xl:w-auto xl:min-w-[500px] mt-6 xl:mt-0">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 p-4 md:p-6 rounded-2xl bg-[var(--valo-bg-surface)]/20 border border-[var(--valo-border)]/20">
+      <div
+        className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 p-4 md:p-6 rounded-2xl bg-[var(--valo-bg-surface)] border border-[var(--valo-border)]"
+        style={{ boxShadow: "var(--shadow-premium-soft)" }}
+      >
         <StatCard label="K/D Ratio" value={kdRatio} decimals={2} />
         <StatCard
           label="HS %"

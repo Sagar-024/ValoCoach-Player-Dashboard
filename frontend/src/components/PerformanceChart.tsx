@@ -65,14 +65,16 @@ export default function PerformanceChart({ matches }: PerformanceChartProps) {
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex items-center gap-4 mb-8 md:mb-12">
-        <div className="w-12 h-[2px] bg-[var(--valo-primary)] rounded-full" />
+      <div className="mb-8 md:mb-12">
         <h3 className="font-display text-2xl md:text-3xl font-bold text-[var(--valo-text-primary)] tracking-tight">
           Tactical Map Performance
         </h3>
       </div>
 
-      <div className="relative w-full h-[320px] md:h-[450px] p-4 md:p-12 rounded-3xl bg-[var(--valo-bg-surface)] border border-[var(--valo-border)] shadow-[var(--shadow-premium-hard)] overflow-hidden">
+      <div
+        className="relative w-full h-[320px] md:h-[450px] p-4 md:p-12 rounded-3xl bg-[var(--valo-bg-surface)] border border-[var(--valo-border)] overflow-hidden"
+        style={{ boxShadow: "var(--shadow-premium-hard)" }}
+      >
         {/* Magazine Texture Layer */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
