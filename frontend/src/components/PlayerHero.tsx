@@ -25,20 +25,20 @@ export default function PlayerHero({ data }: PlayerHeroProps) {
       "
       style={{
         background:
-          "radial-gradient(ellipse at top, rgba(255, 70, 85, 0.05) 0%, transparent 50%), linear-gradient(180deg, rgba(18, 23, 29, 0) 0%, rgba(255, 70, 85, 0.02) 100%)",
-        minHeight: "unset", // prevents unwanted vertical stretch
+          "linear-gradient(180deg, rgba(18, 23, 29, 0) 0%, rgba(255, 70, 85, 0.02) 100%)",
+        minHeight: "unset",
       }}
     >
       <Container>
         <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-20">
-          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-10 flex-1 w-full max-w-3xl">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 flex-1 w-full max-w-3xl">
             <PlayerAvatar
               imageUrl={data.player_card_link}
               playerName={data.player_name}
               fallbackInitial={displayName.substring(0, 1).toUpperCase()}
             />
 
-            <div className="flex flex-col items-center md:items-start gap-4 md:gap-6 text-center md:text-left w-full">
+            <div className="flex flex-col items-center md:items-start gap-4 text-center md:text-left w-full">
               <PlayerName name={displayName} tag={displayTag} />
 
               <PlayerRankInfo
@@ -96,14 +96,8 @@ function PlayerAvatar({
             className="object-cover w-full h-full"
           />
         ) : (
-          <div
-            className="w-full h-full flex items-center justify-center"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--valo-bg-elevated) 0%, var(--valo-bg-deep) 100%)",
-            }}
-          >
-            <span className="font-display font-medium text-3xl text-[var(--valo-text-tertiary)] opacity-40">
+          <div className="w-full h-full flex items-center justify-center bg-[var(--valo-bg-surface)]">
+            <span className="font-display font-medium text-3xl text-[var(--valo-text-tertiary)] opacity-50">
               {fallbackInitial}
             </span>
           </div>
@@ -181,13 +175,12 @@ function PlayerRankInfo({
 
       <Divider />
 
+      <Divider />
+
       <div className="flex items-center gap-2 group cursor-default">
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--valo-success)] opacity-60" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--valo-success)] shadow-[0_0_6px_rgba(0,214,163,0.5)]" />
-        </span>
-        <span className="text-xs uppercase tracking-widest font-bold text-[var(--valo-text-tertiary)] group-hover:text-[var(--valo-success)] transition-colors duration-200">
-          Active
+        <div className="w-1.5 h-1.5 rounded-full bg-[var(--valo-text-tertiary)] opacity-50" />
+        <span className="text-xs uppercase tracking-widest font-bold text-[var(--valo-text-tertiary)]">
+          Online
         </span>
       </div>
     </div>
@@ -215,10 +208,7 @@ function PlayerStats({
 }: PlayerStatsProps) {
   return (
     <div className="w-full xl:w-auto xl:min-w-[500px] mt-6 xl:mt-0">
-      <div
-        className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 p-2 md:p-4 rounded-2xl md:bg-[var(--valo-bg-surface)]/40 backdrop-blur-sm border border-[var(--valo-border)]/30"
-        style={{ boxShadow: "var(--shadow-premium-soft)" }}
-      >
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8 p-4 md:p-6 rounded-2xl bg-[var(--valo-bg-surface)]/20 border border-[var(--valo-border)]/20">
         <StatCard label="K/D Ratio" value={kdRatio} decimals={2} />
         <StatCard
           label="HS %"

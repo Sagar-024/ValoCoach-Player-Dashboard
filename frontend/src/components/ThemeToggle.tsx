@@ -11,7 +11,9 @@ export default function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return <div className="w-11 h-11" />; // Placeholder to prevent layout shift
+  }
 
   const isDark = theme === "dark";
 
