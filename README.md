@@ -8,7 +8,7 @@ ValoCoach is a web app that turns your Valorant match data into easy-to-understa
 
 ## Check it out
 
-[Live Demo](https://valocoach-dashboard.vercel.app/)
+[Live Demo](https://valo-coach-player-dashboard-wlbr.vercel.app/)
 
 ## Built with
 
